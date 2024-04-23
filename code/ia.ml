@@ -35,7 +35,7 @@ let joue_ia (tab : Plateau.couleurs array array) (joueur:Plateau.couleurs):unit 
   try 
   for num_tab = 0 to 8 do 
     try
-      if num_tab mod 2 = 1 then           (* S'il n'y a pas de point dans la ligne assiilée à un tableau *)
+      if num_tab mod 2 = 1 then           (* S'il n'y a pas de point dans la ligne assimilée à un tableau *)
         raise Continue
       else 
         for indice = 2 to 10 do
@@ -56,15 +56,15 @@ let joue_ia (tab : Plateau.couleurs array array) (joueur:Plateau.couleurs):unit 
               end
               
             else
-              let check_point = compte_cote tab num_tab indice in    (* La liste des côtés blanc au point *)
-              let taille_check_point = List.length check_point in    (*  le nb de côtés blanc du point en haut à gauche (2ème colonne) *) 
+              let check_point = compte_cote tab num_tab indice in    (* La liste des côtés blancs autour du point *)
+              let taille_check_point = List.length check_point in    (*  le nb de côtés blancs du point en haut à gauche (2ème colonne) *) 
               
-              if taille_check_point = 1 then                 (* S'il le point testé permet de fermer un carré *)
+              if taille_check_point = 1 then                 (* Si le point testé permet de fermer un carré *)
                 begin
                   taille_premier_point := 1;
                   premier_point := check_point
                 end
-              else if taille_check_point = 3 || taille_check_point = 4 then   (* S'il le point testé ne donne pas de point au joueur *) 
+              else if taille_check_point = 3 || taille_check_point = 4 then   (* Si le point testé ne donne pas de point au joueur *) 
                   begin
                     taille_premier_point := taille_check_point;
                     premier_point := check_point
